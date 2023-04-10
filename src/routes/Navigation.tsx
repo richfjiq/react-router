@@ -1,36 +1,15 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
+import { LazyPage1, LazyPage2, LazyPage3 } from '../lazyload/pages';
 
 const Navigation = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="about"
-          element={
-            <Navbar>
-              <h1>About Page</h1>
-            </Navbar>
-          }
-        />
-        <Route
-          path="users"
-          element={
-            <Navbar>
-              <h1>Users Page</h1>
-            </Navbar>
-          }
-        />
-        <Route
-          path="home"
-          element={
-            <Navbar>
-              <h1>Home Page</h1>
-            </Navbar>
-          }
-        />
-        <Route path="/*" element={<Navigate to="/home" replace />} />
+        <Route path="/lazy1" element={<LazyPage1 />} />
+        <Route path="/lazy2" element={<LazyPage2 />} />
+        <Route path="/lazy3" element={<LazyPage3 />} />
+        <Route path="/*" element={<Navigate to="/lazy1" replace />} />
       </Routes>
     </BrowserRouter>
   );

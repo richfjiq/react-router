@@ -15,26 +15,26 @@ const Navbar: FC<Props> = ({ children }) => {
         <ul>
           <li>
             <NavLink
-              to="/home"
+              to="/lazy1"
               className={({ isActive }) => (isActive ? 'nav-active' : '')}
             >
-              Home
+              Lazy1
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/about"
+              to="/lazy2"
               className={({ isActive }) => (isActive ? 'nav-active' : '')}
             >
-              About
+              Lazy2
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/users"
+              to="/lazy3"
               className={({ isActive }) => (isActive ? 'nav-active' : '')}
             >
-              Users
+              Lazy3
             </NavLink>
           </li>
         </ul>
