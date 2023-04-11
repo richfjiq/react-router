@@ -1,38 +1,20 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
+import { routes } from './routes';
+import { Suspense } from 'react';
 
 const Navigation = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="about"
-          element={
-            <Navbar>
-              <h1>About Page</h1>
-            </Navbar>
-          }
-        />
-        <Route
-          path="users"
-          element={
-            <Navbar>
-              <h1>Users Page</h1>
-            </Navbar>
-          }
-        />
-        <Route
-          path="home"
-          element={
-            <Navbar>
-              <h1>Home Page</h1>
-            </Navbar>
-          }
-        />
-        <Route path="/*" element={<Navigate to="/home" replace />} />
-      </Routes>
-    </BrowserRouter>
+    <Suspense fallback={<span>Loading...</span>}>
+      <BrowserRouter>
+        <Routes>
+          {routes.map(({ path, Component }) => (
+            <Route key={path} path={`${path}`} element={<Component />} />
+          ))}
+          <Route path="/*" element={<Navigate to={routes[0].path} replace />} />
+        </Routes>
+      </BrowserRouter>
+    </Suspense>
   );
 };
 
