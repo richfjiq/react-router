@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { NavLink } from 'react-router-dom';
+import { routes } from '../routes/routes';
 
 interface Props {
   children: ReactNode;
@@ -13,30 +14,16 @@ const Navbar: FC<Props> = ({ children }) => {
       <nav>
         <img src="vite.svg" alt="React Logo" height={100} width={100} />
         <ul>
-          <li>
-            <NavLink
-              to="/lazy1"
-              className={({ isActive }) => (isActive ? 'nav-active' : '')}
-            >
-              Lazy1
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/lazy2"
-              className={({ isActive }) => (isActive ? 'nav-active' : '')}
-            >
-              Lazy2
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/lazy3"
-              className={({ isActive }) => (isActive ? 'nav-active' : '')}
-            >
-              Lazy3
-            </NavLink>
-          </li>
+          {routes.map(({ name, to }) => (
+            <li key={name}>
+              <NavLink
+                to={to}
+                className={({ isActive }) => (isActive ? 'nav-active' : '')}
+              >
+                {name}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
       <div className="container">{children}</div>
